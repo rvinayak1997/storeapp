@@ -1,15 +1,6 @@
 
 <div class="container">
         <div class="row">
-            <div *ngFor="let item of products">
-              <div class="card" style="width: 18rem;" *ngIf="!item.isAvailable" >
-              <img src="{{item.image}}" class="card-img-top" alt="...">
-              <div class="card-body"  >
-                <h5 class="card-title">{{item.name|uppercase}}</h5>
-                <p class="card-text">{{item.price}}.</p>
-                <p class="card-text">{{item.description}}.</p>
-                <button href="#" class="btn btn-primary"   [disabled]="item.isAvailable">Add To Cart</button>
-              </div>
-          </div>
+          <app-productdetails  *ngFor="let item of products"[item]='item'></app-productdetails>
         </div>
-        </div>
+</div>
