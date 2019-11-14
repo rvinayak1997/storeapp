@@ -3,20 +3,16 @@
         <h2>Add Products</h2>
         <form  [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
           <div class="form-group">
-            <label for="text">Name:</label>
-            <input type="text" class="form-control"  formControlName="name" id="name" placeholder="Enter name" name="name">
+            <label for="text">ID:</label>
+            <input type="number" class="form-control"  formControlName="id" id="id" placeholder="Enter id" name="id">
           </div>
           <div class="form-group">
-            <label for="number">Price:</label>
-            <input type="number" class="form-control" formControlName="price" id="price" placeholder="Enter price" name="price">
+            <label for="text">Title:</label>
+            <input type="text" class="form-control"  formControlName="title" id="title" placeholder="Enter title" name="title">
           </div>
           <div class="form-group">
             <label for="text">Image URL:</label>
-            <input type="text" class="form-control" formControlName="image" id="imageurl" placeholder="Enter URL" name="image">
-          </div>
-          <div class="form-group">
-            <label for="text">ImageAlt:</label>
-            <input type="text" class="form-control" formControlName="imageAlt" id="imagealt" placeholder="Enter ImageAlt" name="imageAlt">
+            <input type="text" class="form-control" formControlName="imageUrl" id="imageUrl" placeholder="Enter URL" name="imageUrl">
           </div>
           <div class="form-group">
             <label for="text">Description:</label>
@@ -24,11 +20,14 @@
           </div>
           <div class="form-group">
             <label for="text">Availability:</label>
-            <select formControlName="isAvailable">
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
+            <input type="radio" formControlName="isAvailable" id="isAvailable" value="true">True
+            <input type="radio" formControlName="isAvailable" id="isAvailable" value="false">False
           </div>
+          <div class="form-group">
+            <label for="number">Price:</label>
+            <input type="number" class="form-control" formControlName="price" id="price" placeholder="Enter price" name="price">
+          </div>
+         
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>

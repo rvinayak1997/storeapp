@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -7,9 +9,35 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductdetailsComponent implements OnInit {
 @Input() item;
-  constructor() { }
+@Output() isDeleted = new EventEmitter();
+  constructor(private route: ActivatedRoute,
+              private productservice: ProductsService,
+              private Route2: Router) { }
+  selectedProduct;
+  id;
 
   ngOnInit() {
+    this.route.params.subscribe (params => {
+      this.id = +params.id;
+      console.log(this.id);
+      this.productservice.onEdit(this.id).subscribe(Response => {
+        this.selectedProduct = Response;
+        if (this.id) {
+          this.item = this.selectedProduct;
+          console.log(this.item);
+        }
+      });
+    });
   }
-
+  delete(selectedId) {
+    if (confirm('Are you sure about deleting this product')) {
+      this.productservice.deleteProduct(selectedId).subscribe(Response => {
+            this.isDeleted.emit('deleted');
+        //  this.Route2.navigate(['']);
+      });
+    } else {
+      alert('cancelled');
+    }
+  }
+ 
 }

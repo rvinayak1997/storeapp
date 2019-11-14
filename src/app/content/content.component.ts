@@ -6,13 +6,18 @@ import { ProductsService } from '../services/products.service';
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
+
 })
 export class ContentComponent implements OnInit {
-  products: Array<Product>;
+  products;
   constructor(public productservice: ProductsService ) { }
 
   ngOnInit() {
-    this.products = this.productservice.getProducts();
-
+    this.productservice.getProducts().subscribe(Response =>{ this.products = Response});
   }
+  deleted(event)
+  {
+    this.productservice.getProducts().subscribe(Response =>{ this.products = Response});
+  }
+ 
 }

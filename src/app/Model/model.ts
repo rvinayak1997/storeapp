@@ -1,8 +1,10 @@
  export interface Product {
-  name: string;
-  price: number;
-  image: string;
+  id: number;
+  title: string;
+  imageUrl: string;
   description: string;
-  imageAlt: string;
   isAvailable: boolean;
+  price: number;
+  createdAt: string;
+  updatedAt: string;
 }

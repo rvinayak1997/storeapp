@@ -1,10 +1,12 @@
 
-<div class="card" style="width: 18rem;" *ngIf="item.isAvailable" routerLink="/product-details" >
-    <img src="{{item.image}}" class="card-img-top" alt="...">
+<div class="card" style="width: 22rem;" >
+    <img src="{{item.imageUrl}}" class="card-img-top" alt="...">
     <div class="card-body"  >
-      <h5 class="card-title">{{item.name|uppercase}}</h5>
-      <p class="card-text">{{item.price}}.</p>
-      <p class="card-text">{{item.description}}.</p>
-      <button href="#" class="btn btn-primary"   [disabled]="!item.isAvailable">Add To Cart</button>
+      <h5 class="card-title"[routerLink]="['product-details',item.id]">{{item.title|uppercase}}</h5>
+      <p class="card-text" [routerLink]="['product-details',item.id]">{{item.price}}</p>
+      <p class="card-text" [routerLink]="['product-details',item.id]">{{item.description}}</p>
+      <button href="#" class="btn btn-primary"   [disabled]="!item.isAvailable" >Add To Cart</button>
+      <a class="btn btn-warning" [routerLink]="['add-product',item.id]">Edit Product</a>
+      <a class="btn btn-danger" (click)="delete(item.id)">Delete Product</a>
     </div>
 </div>
